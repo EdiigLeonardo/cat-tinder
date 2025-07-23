@@ -1,7 +1,7 @@
-export interface Cat {
-  id: number;
-  name: string;
-  age: number;
-  country: string;
-  image: string;
-}
+type Cat = {
+  id: string;
+  url: string;
+  name?: string;
+  origin?: string;
+  age?: number;
+};
