@@ -1,4 +1,4 @@
-# Logs
+/android/
 logs
 *.log
 npm-debug.log*
@@ -81,7 +81,6 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
-android
 
 # Gatsby files
 .cache/
@@ -138,6 +137,17 @@ android
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+vite.config.ts.timestamp-*
 
 android/*
-/android
+./android/app
+./android/build
+./android/.gradle
+./android/app/build
+./android/app/src
+./android/app/src/main
+./android/app/src/main/java
+./android/app/src/main/res
+./android/app/src/main/AndroidManifest.xml
+
+.expo/web/

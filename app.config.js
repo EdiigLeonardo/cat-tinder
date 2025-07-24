@@ -6,11 +6,11 @@ module.exports = {
     slug: "cat-tinder",
     version: version,
     orientation: "portrait",
-    icon: "./assets/icon.png",
+    icon: "./assets/cat.jpg",
     userInterfaceStyle: "light",
     newArchEnabled: true,
     splash: {
-      image: "./assets/splash-icon.png",
+      image: "./assets/cat.jpg",
       resizeMode: "contain",
       backgroundColor: "#ffffff",
     },
@@ -19,13 +19,17 @@ module.exports = {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: "./assets/adaptive-icon.png",
+        foregroundImage: "./assets/cat.jpg",
         backgroundColor: "#ffffff",
       },
       edgeToEdgeEnabled: true,
     },
     web: {
-      favicon: "./assets/favicon.png",
+      favicon: "./assets/cat.jpg",
+    },
+
+    android: {
+      package: "com.anonymous.cattinder",
     },
   },
 };
