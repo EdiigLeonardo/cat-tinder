@@ -8,6 +8,7 @@ import ProfileScreen from "containers/ProfileScreen";
 import { SafeAreaView, View } from "react-native";
 import { scale, verticalScale } from "scaling";
 import { transform } from "@babel/core";
+import FavoritesScreen from "containers/Favorites";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ export default function App() {
         flexDirection: "column",
         justifyContent: "space-between",
         backgroundColor: "#fdfbfd",
-        marginTop: scale(50),
+        marginTop: scale(20),
       }}
     >
       <NavigationContainer>
@@ -40,6 +41,7 @@ export default function App() {
               elevation: 5,
               bottom: verticalScale(50),
               textAlign: "center",
+              marginBottom: verticalScale(5),
             },
             tabBarIcon: ({
               focused,

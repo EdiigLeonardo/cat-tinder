@@ -22,17 +22,29 @@ type Props = {
   cat: Cat;
   onLike: () => void;
   onDislike: () => void;
+  isFavorite?: boolean;
+  disableActions?: boolean;
 };
 
-const CatProfileCard: React.FC<Props> = ({ cat, onLike, onDislike }) => {
+const CatProfileCard: React.FC<Props> = ({
+  cat,
+  onLike,
+  onDislike,
+  isFavorite = false,
+  disableActions = false,
+}) => {
   return (
     <SafeAreaView style={styles.cardContainer}>
       <View style={styles.cardInside}>
         <Image source={{ uri: cat.url }} style={styles.image} />
         <View style={styles.infoBox}>
-          <Text style={styles.name}>{cat.name}</Text>
-          <Text style={styles.details}>{cat.origin}</Text>
-          <Text style={styles.age}>{cat.age} anos</Text>
+          <View style={styles.infoRow}>
+            <Text style={styles.name}>{cat.name}</Text>
+            <Text style={styles.age}>{cat.age}</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Text style={styles.details}>{cat.origin}</Text>
+          </View>
         </View>
       </View>
 
@@ -40,7 +52,13 @@ const CatProfileCard: React.FC<Props> = ({ cat, onLike, onDislike }) => {
         <TouchableOpacity onPress={onDislike} style={styles.actionBtn}>
           <Ionicons name="close" size={28} color="#f55" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={onLike} style={styles.actionBtn}>
+        <TouchableOpacity
+          onPress={() => {
+            console.debug("[CATPROFILECARD] Liked cat:", cat.name);
+            onLike();
+          }}
+          style={styles.actionBtn}
+        >
           <Ionicons name="heart" size={28} color="#4caf50" />
         </TouchableOpacity>
       </View>
@@ -64,15 +82,34 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     alignItems: "center",
     elevation: scale(5),
+    height: scale(320),
   },
   image: {
     width: "100%",
-    height: scale(200),
+    height: "100%",
+    marginBottom: scale(30),
   },
   infoBox: {
     alignItems: "center",
+    display: "flex",
+    position: "absolute",
+    width: "100%",
+    height: "30%",
+    bottom: 0,
+    backgroundColor: "#fff",
+    borderTopLeftRadius: scale(20),
+    borderTopRightRadius: scale(20),
     padding: scale(16),
     elevation: scale(5),
+  },
+  infoRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: scale(10),
+    flexDirection: "row",
+    width: "100%",
+    marginBottom: scale(10),
   },
   name: {
     fontSize: scale(22),
@@ -84,7 +121,8 @@ const styles = StyleSheet.create({
   },
   age: {
     fontSize: scale(16),
-    color: "#555",
+    color: "black",
+    fontWeight: "bold",
   },
   actionRow: {
     flexDirection: "row",
